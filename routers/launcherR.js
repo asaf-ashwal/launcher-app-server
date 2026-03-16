@@ -3,7 +3,8 @@ import {
   getAll,
   getlauncher,
   createLauncher,
-//   updateLauncher,
+  deleteLauncher,
+    updateLauncher,
 } from "../controller/lanuncherC.js";
 
 const router = express.Router()
@@ -12,8 +13,9 @@ const router = express.Router()
 router.get('/', getAll)
 router.get("/:id", getlauncher);
 router.post("/", createLauncher);
+router.delete("/:id", deleteLauncher);
 
-// router.put("/:id", updateLauncher);
+router.put("/:id", updateLauncher);
 
 
 export default router

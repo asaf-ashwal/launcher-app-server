@@ -4,7 +4,13 @@ import {
   create,
   deleteL,
   update,
+  updateDestroyedLauncherD,
 } from "../dal/launcherCrud.js";
+
+export async function updateDestroyedLauncherS(id) {
+   await updateDestroyedLauncherD(id);
+  
+}
 
 export async function getAllS() {
   const lanunchers = await getLaunchers();
@@ -17,7 +23,7 @@ export async function getlauncherS(id) {
   return lanuncher;
 }
 export async function createLauncherS(launcher) {
-  await create(launcher);
+  await create({...launcher, destroyed:false});
 }
 
 export async function deleteLauncherS(id) {

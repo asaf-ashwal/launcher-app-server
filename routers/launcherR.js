@@ -4,18 +4,20 @@ import {
   getlauncher,
   createLauncher,
   deleteLauncher,
-    updateLauncher,
+  updateLauncher,
+  // updateDestroyed,
 } from "../controller/lanuncherC.js";
+import {isModiin} from "../midllewer/roles.js";
 
-const router = express.Router()
+const router = express.Router();
 
-
-router.get('/', getAll)
+router.get("/", getAll);
 router.get("/:id", getlauncher);
-router.post("/", createLauncher);
-router.delete("/:id", deleteLauncher);
+router.post("/", isModiin, createLauncher);
+router.delete("/:id", isModiin, deleteLauncher);
+router.put("/:id", isModiin, updateLauncher);
 
-router.put("/:id", updateLauncher);
+// router.put("/:id", isAirForce, updateDestroyed);
 
 
-export default router
+export default router;

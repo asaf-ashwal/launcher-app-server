@@ -10,7 +10,10 @@ import {
 export async function createUserS(user) {
   await createUserD(user);
 }
-
+export async function getUserByIDS(id) {
+  const users = await getUserByIdD(id);
+  return users;
+}
 export async function getAllUsersS() {
   const users = await getAllUsersD();
   return users;

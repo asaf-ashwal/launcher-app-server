@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import {config} from "dotenv";
 import {GetUserByUserNAndPass} from "../dal/usersD.js";
-import { UpdateLastLoginS } from "../service/usersS.js";
+import {UpdateLastLoginS} from "../service/usersS.js";
 
 config();
 
@@ -9,9 +9,9 @@ export async function sign({username, password}) {
   const user = await GetUserByUserNAndPass({username, password});
   if (!user) throw new Error("user not exist !");
   console.log({user});
-  
+
   const token = jwt.sign(user, process.env.SECRET, {expiresIn: "1d"});
-      await UpdateLastLoginS(user.id);
+  await UpdateLastLoginS(user.id);
   return `birrer ${token}`;
 }
 

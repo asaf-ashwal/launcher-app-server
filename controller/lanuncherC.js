@@ -4,6 +4,7 @@ import {
   createLauncherS,
   deleteLauncherS,
   updateLauncherS,
+  updateDestroyedLauncherS,
 } from "../service/launcherS.js";
 
 export async function getAll(req, res) {
@@ -62,6 +63,20 @@ export async function updateLauncher(req, res) {
     const result = await updateLauncherS(
       {city, rocketType, latitude, longitude, name},
       id,
+    );
+    res.send(result);
+  } catch (error) {
+    console.error(error);
+    res.status(400).send(error.message);
+  }
+}
+
+export async function updateDestroyedLauncher(req, res) {
+  try {
+    const {id} = req.params;
+    
+    const result = await updateDestroyedLauncherS(
+      id
     );
     res.send(result);
   } catch (error) {

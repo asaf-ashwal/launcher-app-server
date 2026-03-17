@@ -6,6 +6,7 @@ import {
   login,
   getUser,
   getAllUser,
+  getUserByID,
 } from "../controller/usersC.js";
 import {verifay} from "../midllewer/auth.js";
 import {isAdmin} from "../midllewer/roles.js";
@@ -20,8 +21,8 @@ router.delete("/register/delete/:id", verifay, isAdmin, deleteUser);
 
 router.post("/login", login);
 
-router.get("/getUser",verifay, getUser);
-
-router.get("/getAllUser",verifay, getAllUser);
+router.get("/getUser", verifay, getUser);
+router.get("/getAllUser", verifay, isAdmin, getAllUser);
+router.get("/:userId", verifay, isAdmin, getUserByID);
 
 export default router;

@@ -24,6 +24,11 @@ export async function update(lanuncher, id) {
   if (error) throw new Error(error.message);
   return data;
 }
+export async function updateDestroyedLauncherD(id) {
+  const {data, error} = await lanunchers.update({destroyed: true}).eq("id", id);
+  if (error) throw new Error(error.message);
+  return data;
+}
 
 export async function deleteL(id) {
   const {data, error} = await lanunchers.delete().eq("id", id);

@@ -4,7 +4,19 @@ import {
   updateUserS,
   deleteUserS,
   getAllUsersS,
+  getUserByIDS,
 } from "../service/usersS.js";
+
+export async function getUserByID(req, res) {
+  try {
+    const {userId} = req.params;
+    const user = await getUserByIDS(userId);
+    res.send(user);
+  } catch (error) {
+    console.error(error);
+    res.status(400).send(error.message);
+  }
+}
 
 export async function createUser(req, res) {
   try {
